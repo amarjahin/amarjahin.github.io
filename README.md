@@ -1,15 +1,1 @@
----
-layout: default
-title: Home
----
-
-# {{ Ammar's blog }}
-
-Hi there!
-
-## Posts
-
-{% for post in site.posts %}
-  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-  <p>{{ post.date | date: "%B %d, %Y" }}</p>
-{% endfor %}
+# Hi there!

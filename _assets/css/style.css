@@ -1,6 +1,6 @@
 /* Center the text block and restrict width */
 .container {
-    max-width: 800px;      /* Choose 700–900px depending on your taste */
+    max-width: 700px;      /* Choose 700–900px depending on your taste */
     margin: 0 auto;        /* Centers the content */
     padding: 20px;         /* Adds breathing room */
     line-height: 1.6;      /* Improves readability */

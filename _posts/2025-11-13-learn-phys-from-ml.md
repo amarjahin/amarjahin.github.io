@@ -1,3 +1,8 @@
+---
+layout: default
+title: Can we gain new physical insights by studying machine learning models? 
+---
+
 # Can we gain new physical insights by studying machine learning models? 
 
 <!--My first level of understanding of machine learning (ML) models is that they are a big black box with lots of tuning nobs, or parameters, that allows you to approximate certain functions by correctly setting the parameters. 

@@ -12,3 +12,7 @@
     max-width: 100%;
     overflow-x: auto;
   }
+
+  body {
+    background-color: rgb(38, 38, 39);
+  }

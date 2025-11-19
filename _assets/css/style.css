@@ -1,0 +1,14 @@
+/* Center the text block and restrict width */
+.container {
+    max-width: 800px;      /* Choose 700–900px depending on your taste */
+    margin: 0 auto;        /* Centers the content */
+    padding: 20px;         /* Adds breathing room */
+    line-height: 1.6;      /* Improves readability */
+    font-size: 18px;       /* Optional but nicer for blogs */
+  }
+  
+  /* Optional: slightly narrower math blocks */
+  mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }

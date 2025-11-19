@@ -46,7 +46,7 @@ As Sidney Coleman would say, "The career of a young theoretical physicist consis
 Anyway, if you are not familiar, a harmonic oscillator is a body with mass $m$ that is attached to a spring with a spring constant $k$.
 Classically, the one-dimensional harmonic oscillator state is fully described by its position $x$ and momentum $p$. We can try to train an ML model to learn the dynamics of this system. One way to train this model is to give the model $X = (x_0,\  p_0,\ t)$ and ask it to output $Y = (x(t), \ p(t))$. With the help of ChatGPT, I built a neural network with $4$ hidden layers ($16$ units in the first and last layers, and $32$ units in the middle two). Training this network on $5\times 10^4$ samples of $(X,Y)$, yields pretty dismal results to be honest. I was curious, I had to try. Here is a plot for the predicted trajectory of the model: 
 
-![Neural network trained to predict a simple harmonic oscillator dynamics](harmonic_oscilator_nn.png)
+![Neural network trained to predict a simple harmonic oscillator dynamics]({{ '/assets/figures/harmonic_oscilator_nn.png' | relative_url }})
 
 
 One can say the model learned something about the system. The trajectory kind of resemble a circle (as it should). But even in this very simple of examples it is very hard to say what exactly has the model learned. 

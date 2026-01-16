@@ -25,31 +25,37 @@
 </head>
 
 <body>
-  <!-- Site header (optional, customize or remove) -->
+  <!-- Site header -->
   <header>
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    {% if site.description %}
-    <p>{{ site.description }}</p>
-    {% endif %}
+    <div class="container">
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      {% if site.description %}
+      <p>{{ site.description }}</p>
+      {% endif %}
+    </div>
   </header>
 
   <!-- Main content block -->
   <main class="container">
-    {{ content }}
+    <article>
+      {{ content }}
+    </article>
     <section id="comments">
-    <script src="https://utteranc.es/client.js"
-        repo="amarjahin/amarjahin.github.io"
-        issue-term="pathname"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-    </script>
+      <script src="https://utteranc.es/client.js"
+          repo="amarjahin/amarjahin.github.io"
+          issue-term="pathname"
+          theme="preferred-color-scheme"
+          crossorigin="anonymous"
+          async>
+      </script>
     </section>
   </main>
 
-  <!-- Site footer (optional) -->
+  <!-- Site footer -->
   <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
+    </div>
   </footer>
 
 </body>

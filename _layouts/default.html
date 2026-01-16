@@ -40,6 +40,7 @@
     <article>
       {{ content }}
     </article>
+    {% if page.date %}
     <section id="comments">
       <script src="https://giscus.app/client.js"
           data-repo="amarjahin/amarjahin.github.io"
@@ -57,6 +58,7 @@
           async>
       </script>
     </section>
+    {% endif %}
   </main>
 
   <!-- Site footer -->

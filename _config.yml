@@ -1,3 +1,6 @@
+exclude:
+  - "_posts/*.pdf"  # PDFs are binary; don't process as posts
+
 theme: jekyll-theme-minimal
 title: Ammar's Blog
 author: Ammar Jahin 

@@ -10,24 +10,103 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Latest Posts" }}</h2>
-    <ul class="post-list">
-      {%- assign post_limit = site.home_post_limit | default: 5 -%}
-      {%- for post in site.posts limit:post_limit -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- assign post_limit = site.home_post_limit | default: 2 -%}
+    {%- assign posts_by_category = site.posts | group_by: "category" -%}
+    {%- assign category_order = site.category_order | default: "" | split: "," -%}
+
+    {%- if category_order.size > 0 -%}
+      {%- for cat in category_order -%}
+        {%- assign cat_clean = cat | strip -%}
+        {%- assign display_cat = cat_clean | default: "Other" -%}
+        {%- if display_cat == "" -%}
+          {%- assign display_cat = "Other" -%}
         {%- endif -%}
-      </li>
+        {%- assign group = nil -%}
+        {%- for g in posts_by_category -%}
+          {%- assign g_name = g.name | default: "" -%}
+          {%- if g_name == cat_clean or g_name == cat -%}
+            {%- assign group = g -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- if display_cat == "Other" and (g_name == "" or g_name == nil) -%}
+            {%- assign group = g -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if group and group.items.size > 0 -%}
+          {%- assign cat_slug = site.category_slugs[display_cat] -%}
+          {%- assign cat_url = site.category_slugs[display_cat] | prepend: "/category/" | append: "/" | relative_url -%}
+          <h2 class="post-list-heading">
+            {%- if cat_slug -%}
+            <a href="{{ cat_url }}">{{ display_cat }}</a>
+            {%- else -%}
+            {{ display_cat }}
+            {%- endif -%}
+          </h2>
+          {%- assign cat_desc = site.category_descriptions[display_cat] -%}
+          {%- if cat_desc -%}
+          <p class="category-description">{{ cat_desc }}</p>
+          {%- endif -%}
+          <ul class="post-list">
+            {%- for post in group.items limit: post_limit -%}
+            <li>
+              <span class="post-meta">{{ post.date | date: date_format }}</span>
+              <h3>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+              {%- endif -%}
+            </li>
+            {%- endfor -%}
+          </ul>
+          {%- if group.items.size > post_limit and cat_slug -%}
+          <p class="view-all"><a href="{{ cat_url }}">View all {{ group.items.size }} posts →</a></p>
+          {%- endif -%}
+        {%- endif -%}
       {%- endfor -%}
-    </ul>
+    {%- else -%}
+    {%- for group in posts_by_category -%}
+      {%- assign cat = group.name | default: "Other" -%}
+      {%- if cat == "" -%}
+        {%- assign cat = "Other" -%}
+      {%- endif -%}
+      {%- assign cat_slug = site.category_slugs[cat] -%}
+      {%- assign cat_url = site.category_slugs[cat] | prepend: "/category/" | append: "/" | relative_url -%}
+      <h2 class="post-list-heading">
+        {%- if cat_slug -%}
+        <a href="{{ cat_url }}">{{ cat }}</a>
+        {%- else -%}
+        {{ cat }}
+        {%- endif -%}
+      </h2>
+      {%- assign cat_desc = site.category_descriptions[cat] -%}
+      {%- if cat_desc -%}
+      <p class="category-description">{{ cat_desc }}</p>
+      {%- endif -%}
+      <ul class="post-list">
+        {%- for post in group.items limit: post_limit -%}
+        <li>
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </li>
+        {%- endfor -%}
+      </ul>
+      {%- if group.items.size > post_limit and cat_slug -%}
+      <p class="view-all"><a href="{{ cat_url }}">View all {{ group.items.size }} posts →</a></p>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
 
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}

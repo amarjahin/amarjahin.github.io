@@ -32,6 +32,21 @@
       {% if site.description %}
       <p>{{ site.description }}</p>
       {% endif %}
+      <nav class="header-contact">
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {% if site.github %}
+        <span class="sep">·</span>
+        <a href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">GitHub</a>
+        {% endif %}
+        {% if site.twitter %}
+        <span class="sep">·</span>
+        <a href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">Twitter</a>
+        {% endif %}
+        {% if site.linkedin %}
+        <span class="sep">·</span>
+        <a href="https://linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        {% endif %}
+      </nav>
     </div>
   </header>
 

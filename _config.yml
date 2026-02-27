@@ -3,8 +3,30 @@ exclude:
 
 theme: jekyll-theme-minimal
 title: Ammar's Blog
-author: Ammar Jahin 
+author: Ammar Jahin
 email: amar.jahin@gmail.com
+description: "Learning about physics, machine learning, and the interaction between the two. "
+
+# Section order on homepage (posts grouped by category)
+category_order: Background and frameworks, Research notes
+
+# Short description for each category (shown before the post list)
+category_descriptions:
+  Background and frameworks: "Posts intended to be pedagogical."
+  Research notes: "I try stuff, and share what I find."
+
+# URL slug for each category (used for /category/slug/ pages)
+category_slugs:
+  Background and frameworks: background-frameworks
+  Research notes: research-notes
+
+# Number of posts to show per category on homepage
+home_post_limit: 2
+
+# Optional: add social/contact links (uncomment and fill in)
+github: amarjahin
+# twitter: your_handle
+# linkedin: your-profile
 
 
 rss: rss

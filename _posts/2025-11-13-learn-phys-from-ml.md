@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Can we gain new physical insights by studying machine learning models? 
+title: Can we gain new physical insights by studying machine learning models?
+category: Background and frameworks
 ---
 
 # Can we gain new physical insights by studying machine learning models? 
